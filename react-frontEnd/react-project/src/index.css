@@ -2,4 +2,12 @@
 @import "tailwindcss";
 
 
+body.light {
+    background: #ffffff;
+    color: #110e0e;
+}
 
+body.dark {
+    background: #101828;
+    color: #cac5c5;
+}

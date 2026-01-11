@@ -2,10 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 import { AuthContext } from "../AuthProvider";
 import { useContext } from "react";
-import { Dashboard1 } from "./dashboards/Dashboard1";
+import { ThemeContext } from "../ThemeProvider";
 
 export const Header = () => {
   const { isLogged, setIsLogged } = useContext(AuthContext);
+  const { themeDarkMode, setThemeDarkMode } = useContext(ThemeContext);
 
   const navigate = useNavigate();
 
@@ -16,6 +17,10 @@ export const Header = () => {
     navigate("/");
   };
 
+  const handleChangeMode = () => {
+    setThemeDarkMode((prev) => !prev);
+  };
+
   return (
     <>
       {/* <div className="container bg-red-500 p-3 flex justify-between items-center mx-0"> */}
@@ -24,6 +29,10 @@ export const Header = () => {
           Stock Prediccion Portal
         </Link>
         <div className="flex gap-4">
+          <button onClick={handleChangeMode}>
+            {themeDarkMode ? "☀️ Light" : "🌙 Dark"}
+          </button>
+
           {isLogged ? (
             <>
               <button
